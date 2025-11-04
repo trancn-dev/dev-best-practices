@@ -1,0 +1,77 @@
+{
+  "Laravel Migration Create Table": {
+    "prefix": "migration-create",
+    "body": [
+      "<?php",
+      "",
+      "use Illuminate\\Database\\Migrations\\Migration;",
+      "use Illuminate\\Database\\Schema\\Blueprint;",
+      "use Illuminate\\Support\\Facades\\Schema;",
+      "",
+      "return new class extends Migration",
+      "{",
+      "    /**",
+      "     * Run the migrations.",
+      "     */",
+      "    public function up(): void",
+      "    {",
+      "        Schema::create('${1:table_name}', function (Blueprint \\$table) {",
+      "            \\$table->id();",
+      "            ${2:// Add columns here}",
+      "            \\$table->timestamps();",
+      "            \\$table->softDeletes();",
+      "            ",
+      "            // Indexes",
+      "            ${3:// Add indexes here}",
+      "        });",
+      "    }",
+      "",
+      "    /**",
+      "     * Reverse the migrations.",
+      "     */",
+      "    public function down(): void",
+      "    {",
+      "        Schema::dropIfExists('${1:table_name}');",
+      "    }",
+      "};",
+      ""
+    ],
+    "description": "Create a Laravel migration for creating a table"
+  },
+  "Migration with Foreign Key": {
+    "prefix": "migration-fk",
+    "body": [
+      "\\$table->foreignId('${1:model}_id')",
+      "    ->constrained('${2:table}')",
+      "    ->onDelete('${3:cascade}');",
+      ""
+    ],
+    "description": "Add foreign key constraint"
+  },
+  "Migration Add Column": {
+    "prefix": "migration-add-column",
+    "body": [
+      "Schema::table('${1:table_name}', function (Blueprint \\$table) {",
+      "    \\$table->${2:string}('${3:column_name}')->${4:nullable}()->after('${5:existing_column}');",
+      "});",
+      ""
+    ],
+    "description": "Add column to existing table"
+  },
+  "Migration Add Index": {
+    "prefix": "migration-index",
+    "body": [
+      "\\$table->index('${1:column_name}');",
+      ""
+    ],
+    "description": "Add index to column"
+  },
+  "Migration Unique Constraint": {
+    "prefix": "migration-unique",
+    "body": [
+      "\\$table->unique('${1:column_name}');",
+      ""
+    ],
+    "description": "Add unique constraint"
+  }
+}

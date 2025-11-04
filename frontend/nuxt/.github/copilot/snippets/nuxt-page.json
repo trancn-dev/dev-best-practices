@@ -1,0 +1,28 @@
+{
+  "name": "Nuxt Page",
+  "description": "Basic Nuxt page component",
+  "body": [
+    "<script setup lang=\"ts\">",
+    "definePageMeta({",
+    "  layout: '${1:default}',",
+    "  middleware: [${2:'auth'}]",
+    "})",
+    "",
+    "useHead({",
+    "  title: '${3:Page Title}'",
+    "})",
+    "",
+    "const { data, pending, error } = await useFetch('${4:/api/endpoint}')",
+    "</script>",
+    "",
+    "<template>",
+    "  <div class=\"${5:page-name}\">",
+    "    <div v-if=\"pending\">Loading...</div>",
+    "    <div v-else-if=\"error\">Error: {{ error.message }}</div>",
+    "    <div v-else>",
+    "      $0",
+    "    </div>",
+    "  </div>",
+    "</template>"
+  ]
+}

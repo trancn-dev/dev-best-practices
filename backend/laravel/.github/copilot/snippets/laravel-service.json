@@ -1,0 +1,36 @@
+{
+  "Laravel Service Class": {
+    "prefix": "service",
+    "body": [
+      "<?php",
+      "",
+      "declare(strict_types=1);",
+      "",
+      "namespace App\\Services;",
+      "",
+      "use App\\Models\\${1:Model};",
+      "use Illuminate\\Support\\Collection;",
+      "",
+      "/**",
+      " * ${2:Service description}",
+      " *",
+      " * @package App\\Services",
+      " */",
+      "class ${3:ServiceName}",
+      "{",
+      "    /**",
+      "     * ${4:Method description}",
+      "     *",
+      "     * @param  ${1:Model}  \\$model",
+      "     * @return ${5:mixed}",
+      "     */",
+      "    public function ${6:methodName}(${1:Model} \\$model): ${5:mixed}",
+      "    {",
+      "        ${7:// Implementation}",
+      "    }",
+      "}",
+      ""
+    ],
+    "description": "Create a Laravel Service class"
+  }
+}

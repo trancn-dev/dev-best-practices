@@ -1,0 +1,172 @@
+{
+  "Laravel Model": {
+    "prefix": "model",
+    "body": [
+      "<?php",
+      "",
+      "declare(strict_types=1);",
+      "",
+      "namespace App\\Models;",
+      "",
+      "use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;",
+      "use Illuminate\\Database\\Eloquent\\Model;",
+      "use Illuminate\\Database\\Eloquent\\SoftDeletes;",
+      "use Illuminate\\Database\\Eloquent\\Relations\\BelongsTo;",
+      "use Illuminate\\Database\\Eloquent\\Relations\\HasMany;",
+      "",
+      "/**",
+      " * ${1:Model description}",
+      " *",
+      " * @package App\\Models",
+      " */",
+      "class ${2:ModelName} extends Model",
+      "{",
+      "    use HasFactory, SoftDeletes;",
+      "",
+      "    /**",
+      "     * The attributes that are mass assignable.",
+      "     *",
+      "     * @var array<int, string>",
+      "     */",
+      "    protected \\$fillable = [",
+      "        ${3:'name',}",
+      "    ];",
+      "",
+      "    /**",
+      "     * The attributes that should be hidden.",
+      "     *",
+      "     * @var array<int, string>",
+      "     */",
+      "    protected \\$hidden = [",
+      "        ${4:}",
+      "    ];",
+      "",
+      "    /**",
+      "     * The attributes that should be cast.",
+      "     *",
+      "     * @var array<string, string>",
+      "     */",
+      "    protected \\$casts = [",
+      "        'created_at' => 'datetime',",
+      "        'updated_at' => 'datetime',",
+      "        ${5:}",
+      "    ];",
+      "",
+      "    ${6:// Relationships}",
+      "}",
+      ""
+    ],
+    "description": "Create a Laravel Model"
+  },
+  "Model BelongsTo Relationship": {
+    "prefix": "model-belongsto",
+    "body": [
+      "/**",
+      " * Get the ${1:parent} that owns the ${2:model}.",
+      " */",
+      "public function ${1:parent}(): BelongsTo",
+      "{",
+      "    return \\$this->belongsTo(${3:ParentModel}::class);",
+      "}",
+      ""
+    ],
+    "description": "Add BelongsTo relationship"
+  },
+  "Model HasMany Relationship": {
+    "prefix": "model-hasmany",
+    "body": [
+      "/**",
+      " * Get the ${1:children} for the ${2:model}.",
+      " */",
+      "public function ${1:children}(): HasMany",
+      "{",
+      "    return \\$this->hasMany(${3:ChildModel}::class);",
+      "}",
+      ""
+    ],
+    "description": "Add HasMany relationship"
+  },
+  "Model HasOne Relationship": {
+    "prefix": "model-hasone",
+    "body": [
+      "/**",
+      " * Get the ${1:child} associated with the ${2:model}.",
+      " */",
+      "public function ${1:child}(): HasOne",
+      "{",
+      "    return \\$this->hasOne(${3:ChildModel}::class);",
+      "}",
+      ""
+    ],
+    "description": "Add HasOne relationship"
+  },
+  "Model BelongsToMany Relationship": {
+    "prefix": "model-belongstomany",
+    "body": [
+      "/**",
+      " * The ${1:related} that belong to the ${2:model}.",
+      " */",
+      "public function ${1:related}(): BelongsToMany",
+      "{",
+      "    return \\$this->belongsToMany(${3:RelatedModel}::class)",
+      "        ->withPivot(${4:'role'})  ",
+      "        ->withTimestamps();",
+      "}",
+      ""
+    ],
+    "description": "Add BelongsToMany relationship"
+  },
+  "Model Scope": {
+    "prefix": "model-scope",
+    "body": [
+      "/**",
+      " * Scope a query to only include ${1:active} ${2:models}.",
+      " */",
+      "public function scope${3:Active}(Builder \\$query): void",
+      "{",
+      "    \\$query->where('${4:status}', '${5:active}');",
+      "}",
+      ""
+    ],
+    "description": "Add query scope"
+  },
+  "Model Accessor": {
+    "prefix": "model-accessor",
+    "body": [
+      "/**",
+      " * Get the ${1:attribute} attribute.",
+      " */",
+      "protected function ${1:attribute}(): Attribute",
+      "{",
+      "    return Attribute::make(",
+      "        get: fn (\\$value) => ${2:ucfirst(\\$value)},",
+      "    );",
+      "}",
+      ""
+    ],
+    "description": "Add attribute accessor"
+  },
+  "Model Mutator": {
+    "prefix": "model-mutator",
+    "body": [
+      "/**",
+      " * Set the ${1:attribute} attribute.",
+      " */",
+      "protected function ${1:attribute}(): Attribute",
+      "{",
+      "    return Attribute::make(",
+      "        set: fn (\\$value) => ${2:strtolower(\\$value)},",
+      "    );",
+      "}",
+      ""
+    ],
+    "description": "Add attribute mutator"
+  },
+  "Model Cast": {
+    "prefix": "model-cast",
+    "body": [
+      "'${1:attribute}' => ${2:'datetime'},"
+    ],
+    "description": "Add attribute cast"
+  }
+}

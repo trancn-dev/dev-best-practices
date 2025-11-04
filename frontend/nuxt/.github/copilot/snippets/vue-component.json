@@ -1,0 +1,29 @@
+{
+  "name": "Vue Component",
+  "description": "Basic Vue 3 component with script setup",
+  "body": [
+    "<script setup lang=\"ts\">",
+    "interface Props {",
+    "  ${1:propName}: ${2:string}",
+    "}",
+    "",
+    "const props = defineProps<Props>()",
+    "",
+    "const emit = defineEmits<{",
+    "  '${3:eventName}': [${4:payload}: ${5:string}]",
+    "}>()",
+    "</script>",
+    "",
+    "<template>",
+    "  <div class=\"${6:component-name}\">",
+    "    $0",
+    "  </div>",
+    "</template>",
+    "",
+    "<style scoped>",
+    ".${6:component-name} {",
+    "  /* styles */",
+    "}",
+    "</style>"
+  ]
+}

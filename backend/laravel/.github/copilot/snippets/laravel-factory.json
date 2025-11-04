@@ -1,0 +1,87 @@
+{
+  "Laravel Factory": {
+    "prefix": "factory",
+    "body": [
+      "<?php",
+      "",
+      "declare(strict_types=1);",
+      "",
+      "namespace Database\\Factories;",
+      "",
+      "use App\\Models\\${1:Model};",
+      "use Illuminate\\Database\\Eloquent\\Factories\\Factory;",
+      "",
+      "/**",
+      " * @extends \\Illuminate\\Database\\Eloquent\\Factories\\Factory<\\App\\Models\\${1:Model}>",
+      " */",
+      "class ${1:Model}Factory extends Factory",
+      "{",
+      "    /**",
+      "     * The name of the factory's corresponding model.",
+      "     */",
+      "    protected \\$model = ${1:Model}::class;",
+      "",
+      "    /**",
+      "     * Define the model's default state.",
+      "     *",
+      "     * @return array<string, mixed>",
+      "     */",
+      "    public function definition(): array",
+      "    {",
+      "        return [",
+      "            ${2:'name' => fake()->name(),}",
+      "        ];",
+      "    }",
+      "",
+      "    /**",
+      "     * Define a ${3:state} state.",
+      "     */",
+      "    public function ${3:state}(): static",
+      "    {",
+      "        return \\$this->state(fn (array \\$attributes) => [",
+      "            ${4:'status' => 'active',}",
+      "        ]);",
+      "    }",
+      "}",
+      ""
+    ],
+    "description": "Create a Laravel Factory"
+  },
+  "Factory State": {
+    "prefix": "factory-state",
+    "body": [
+      "/**",
+      " * Define a ${1:state} state.",
+      " */",
+      "public function ${1:state}(): static",
+      "{",
+      "    return \\$this->state(fn (array \\$attributes) => [",
+      "        ${2:'status' => 'active',}",
+      "    ]);",
+      "}",
+      ""
+    ],
+    "description": "Add factory state"
+  },
+  "Factory Create": {
+    "prefix": "factory-create",
+    "body": [
+      "${1:Model}::factory()->create(${2:});"
+    ],
+    "description": "Create model using factory"
+  },
+  "Factory Create Multiple": {
+    "prefix": "factory-count",
+    "body": [
+      "${1:Model}::factory()->count(${2:10})->create();"
+    ],
+    "description": "Create multiple models"
+  },
+  "Factory with State": {
+    "prefix": "factory-with-state",
+    "body": [
+      "${1:Model}::factory()->${2:state}()->create();"
+    ],
+    "description": "Create model with state"
+  }
+}

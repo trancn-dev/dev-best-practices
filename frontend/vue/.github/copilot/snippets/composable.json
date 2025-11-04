@@ -1,0 +1,23 @@
+{
+  "name": "Composable",
+  "description": "Basic composable function",
+  "body": [
+    "export const use${1:Name} = () => {",
+    "  const ${2:state} = ref(${3:initialValue})",
+    "",
+    "  const ${4:computed} = computed(() => {",
+    "    return ${2:state}.value",
+    "  })",
+    "",
+    "  const ${5:method} = () => {",
+    "    $0",
+    "  }",
+    "",
+    "  return {",
+    "    ${2:state}: readonly(${2:state}),",
+    "    ${4:computed},",
+    "    ${5:method}",
+    "  }",
+    "}"
+  ]
+}

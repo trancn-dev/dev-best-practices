@@ -1,0 +1,124 @@
+﻿{
+  "version": "2.0",
+  "project": {
+    "name": "Laravel DevKit",
+    "type": "laravel",
+    "version": "12.x",
+    "php_version": "8.2",
+    "description": "Laravel development kit with GitHub Copilot integration"
+  },
+  "copilot": {
+    "enabled": true,
+    "features": {
+      "code_completion": true,
+      "chat": true,
+      "inline_suggestions": true,
+      "command_palette": true
+    },
+    "context_files": [
+      ".github/copilot/context.md",
+      ".github/copilot/knowledge/*.md",
+      ".github/copilot/rules/*.md",
+      ".github/copilot/prompts/*.md"
+    ],
+    "ignore_patterns": [
+      "vendor/**",
+      "node_modules/**",
+      "storage/**",
+      "bootstrap/cache/**",
+      "*.min.js",
+      "*.min.css"
+    ]
+  },
+  "rules": {
+    "primary": [
+      ".github/copilot/rules/laravel.md",
+      ".github/copilot/rules/psr-12.md",
+      ".github/copilot/rules/security.md"
+    ],
+    "secondary": [
+      ".github/copilot/rules/testing.md",
+      ".github/copilot/rules/performance.md",
+      ".github/copilot/rules/database.md",
+      ".github/copilot/rules/api.md",
+      ".github/copilot/rules/git.md"
+    ]
+  },
+  "prompts": {
+    "shortcuts": {
+      "explain": ".github/copilot/prompts/code-explanation.md",
+      "refactor": ".github/copilot/prompts/refactoring-suggestions.md",
+      "test": ".github/copilot/prompts/testing-strategy.md",
+      "bug": ".github/copilot/prompts/bug-fix-assistant.md",
+      "api": ".github/copilot/prompts/api-design.md",
+      "db": ".github/copilot/prompts/database-design.md",
+      "security": ".github/copilot/prompts/security-audit.md",
+      "perf": ".github/copilot/prompts/performance-optimization.md",
+      "doc": ".github/copilot/prompts/documentation-generation.md",
+      "deploy": ".github/copilot/prompts/deployment-checklist.md"
+    }
+  },
+  "commands": {
+    "available": [
+      "capture-knowledge",
+      "check-implementation",
+      "code-review",
+      "execute-plan",
+      "new-requirement",
+      "review-design",
+      "review-requirements",
+      "update-planning",
+      "writing-test"
+    ]
+  },
+  "ai_instructions": {
+    "always_follow": [
+      "Follow Laravel conventions and best practices",
+      "Use PSR-12 coding standards",
+      "Prioritize security and performance",
+      "Write comprehensive tests",
+      "Add proper documentation comments",
+      "Use type hints and return types",
+      "Follow SOLID principles"
+    ],
+    "code_style": {
+      "indent": "4 spaces",
+      "line_length": 120,
+      "quotes": "single",
+      "trailing_comma": true,
+      "blank_line_after_namespace": true,
+      "blank_line_after_use": true
+    },
+    "laravel_specific": {
+      "use_eloquent": true,
+      "use_query_builder": true,
+      "avoid_raw_queries": true,
+      "use_form_requests": true,
+      "use_resources": true,
+      "use_actions": true,
+      "use_services": true,
+      "use_repositories": true,
+      "_comment": "Remove this section if not using Laravel/PHP"
+    }
+  },
+  "snippets": {
+    "enabled": true,
+    "directory": ".github/copilot/snippets",
+    "auto_import": true
+  },
+  "knowledge_base": {
+    "enabled": true,
+    "directory": ".github/copilot/knowledge",
+    "files": [
+      "business.md",
+      "entities.md",
+      "workflow.md",
+      "php.md",
+      "nodejs.md",
+      "database.md",
+      "security.md",
+      "testing.md",
+      "glossary.md"
+    ]
+  }
+}

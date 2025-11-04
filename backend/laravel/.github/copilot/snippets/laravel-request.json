@@ -1,0 +1,111 @@
+{
+  "Laravel Form Request": {
+    "prefix": "request",
+    "body": [
+      "<?php",
+      "",
+      "declare(strict_types=1);",
+      "",
+      "namespace App\\Http\\Requests;",
+      "",
+      "use Illuminate\\Foundation\\Http\\FormRequest;",
+      "use Illuminate\\Validation\\Rules\\Password;",
+      "",
+      "/**",
+      " * ${1:Request description}",
+      " *",
+      " * @package App\\Http\\Requests",
+      " */",
+      "class ${2:RequestName} extends FormRequest",
+      "{",
+      "    /**",
+      "     * Determine if the user is authorized to make this request.",
+      "     */",
+      "    public function authorize(): bool",
+      "    {",
+      "        return ${3:true};",
+      "    }",
+      "",
+      "    /**",
+      "     * Get the validation rules that apply to the request.",
+      "     *",
+      "     * @return array<string, mixed>",
+      "     */",
+      "    public function rules(): array",
+      "{",
+      "        return [",
+      "            ${4:'name' => 'required|string|max:255',}",
+      "        ];",
+      "    }",
+      "",
+      "    /**",
+      "     * Get custom messages for validator errors.",
+      "     *",
+      "     * @return array<string, string>",
+      "     */",
+      "    public function messages(): array",
+      "    {",
+      "        return [",
+      "            ${5:}",
+      "        ];",
+      "    }",
+      "",
+      "    /**",
+      "     * Get custom attributes for validator errors.",
+      "     *",
+      "     * @return array<string, string>",
+      "     */",
+      "    public function attributes(): array",
+      "    {",
+      "        return [",
+      "            ${6:}",
+      "        ];",
+      "    }",
+      "}",
+      ""
+    ],
+    "description": "Create a Laravel Form Request"
+  },
+  "Request Validation Rules": {
+    "prefix": "request-rules",
+    "body": [
+      "'${1:field}' => '${2:required|string|max:255}',"
+    ],
+    "description": "Add validation rule"
+  },
+  "Request Custom Message": {
+    "prefix": "request-message",
+    "body": [
+      "'${1:field}.${2:required}' => '${3:The field is required.}',"
+    ],
+    "description": "Add custom validation message"
+  },
+  "Request Prepare For Validation": {
+    "prefix": "request-prepare",
+    "body": [
+      "/**",
+      " * Prepare the data for validation.",
+      " */",
+      "protected function prepareForValidation(): void",
+      "{",
+      "    \\$this->merge([",
+      "        '${1:field}' => ${2:strip_tags(\\$this->${1:field})},",
+      "    ]);",
+      "}",
+      ""
+    ],
+    "description": "Add prepareForValidation method"
+  },
+  "Password Validation Rule": {
+    "prefix": "validation-password",
+    "body": [
+      "Password::min(${1:12})",
+      "    ->letters()",
+      "    ->mixedCase()",
+      "    ->numbers()",
+      "    ->symbols()",
+      "    ->uncompromised(),"
+    ],
+    "description": "Add password validation rule"
+  }
+}

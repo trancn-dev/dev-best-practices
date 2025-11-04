@@ -1,0 +1,57 @@
+{
+  "Laravel Middleware": {
+    "prefix": "middleware",
+    "body": [
+      "<?php",
+      "",
+      "declare(strict_types=1);",
+      "",
+      "namespace App\\Http\\Middleware;",
+      "",
+      "use Closure;",
+      "use Illuminate\\Http\\Request;",
+      "use Symfony\\Component\\HttpFoundation\\Response;",
+      "",
+      "/**",
+      " * ${1:Middleware description}",
+      " *",
+      " * @package App\\Http\\Middleware",
+      " */",
+      "class ${2:MiddlewareName}",
+      "{",
+      "    /**",
+      "     * Handle an incoming request.",
+      "     *",
+      "     * @param  \\Closure(\\Illuminate\\Http\\Request): (\\Symfony\\Component\\HttpFoundation\\Response)  \\$next",
+      "     */",
+      "    public function handle(Request \\$request, Closure \\$next): Response",
+      "    {",
+      "        ${3:// Before logic}",
+      "",
+      "        \\$response = \\$next(\\$request);",
+      "",
+      "        ${4:// After logic}",
+      "",
+      "        return \\$response;",
+      "    }",
+      "}",
+      ""
+    ],
+    "description": "Create a Laravel Middleware"
+  },
+  "Middleware with Parameter": {
+    "prefix": "middleware-param",
+    "body": [
+      "public function handle(Request \\$request, Closure \\$next, ${1:string \\$role}): Response",
+      "{",
+      "    if (!\\$request->user() || !\\$request->user()->hasRole(\\$${1:role})) {",
+      "        abort(403);",
+      "    }",
+      "",
+      "    return \\$next(\\$request);",
+      "}",
+      ""
+    ],
+    "description": "Middleware with parameter"
+  }
+}

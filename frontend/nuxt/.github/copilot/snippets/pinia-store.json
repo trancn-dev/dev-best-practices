@@ -1,0 +1,28 @@
+{
+  "name": "Pinia Store",
+  "description": "Pinia store with composition API",
+  "body": [
+    "import { defineStore } from 'pinia'",
+    "",
+    "export const use${1:Name}Store = defineStore('${2:name}', () => {",
+    "  // State",
+    "  const ${3:state} = ref(${4:initialValue})",
+    "",
+    "  // Getters",
+    "  const ${5:getter} = computed(() => {",
+    "    return ${3:state}.value",
+    "  })",
+    "",
+    "  // Actions",
+    "  async function ${6:action}() {",
+    "    $0",
+    "  }",
+    "",
+    "  return {",
+    "    ${3:state},",
+    "    ${5:getter},",
+    "    ${6:action}",
+    "  }",
+    "})"
+  ]
+}

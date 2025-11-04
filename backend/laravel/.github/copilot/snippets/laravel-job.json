@@ -1,0 +1,85 @@
+{
+  "Laravel Job": {
+    "prefix": "job",
+    "body": [
+      "<?php",
+      "",
+      "declare(strict_types=1);",
+      "",
+      "namespace App\\Jobs;",
+      "",
+      "use App\\Models\\${1:Model};",
+      "use Illuminate\\Bus\\Queueable;",
+      "use Illuminate\\Contracts\\Queue\\ShouldQueue;",
+      "use Illuminate\\Foundation\\Bus\\Dispatchable;",
+      "use Illuminate\\Queue\\InteractsWithQueue;",
+      "use Illuminate\\Queue\\SerializesModels;",
+      "",
+      "/**",
+      " * ${2:Job description}",
+      " *",
+      " * @package App\\Jobs",
+      " */",
+      "class ${3:JobName} implements ShouldQueue",
+      "{",
+      "    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;",
+      "",
+      "    /**",
+      "     * The number of times the job may be attempted.",
+      "     */",
+      "    public int \\$tries = ${4:3};",
+      "",
+      "    /**",
+      "     * The number of seconds the job can run before timing out.",
+      "     */",
+      "    public int \\$timeout = ${5:300};",
+      "",
+      "    /**",
+      "     * Create a new job instance.",
+      "     */",
+      "    public function __construct(",
+      "        public ${1:Model} \\$${6:model}",
+      "    ) {}",
+      "",
+      "    /**",
+      "     * Execute the job.",
+      "     */",
+      "    public function handle(): void",
+      "    {",
+      "        ${7:// Implementation}",
+      "    }",
+      "",
+      "    /**",
+      "     * Handle a job failure.",
+      "     */",
+      "    public function failed(\\Throwable \\$exception): void",
+      "    {",
+      "        ${8:// Handle failure}",
+      "    }",
+      "}",
+      ""
+    ],
+    "description": "Create a Laravel Job"
+  },
+  "Dispatch Job": {
+    "prefix": "job-dispatch",
+    "body": [
+      "${1:JobName}::dispatch(\\$${2:model});"
+    ],
+    "description": "Dispatch a job"
+  },
+  "Dispatch Job with Delay": {
+    "prefix": "job-dispatch-delay",
+    "body": [
+      "${1:JobName}::dispatch(\\$${2:model})->delay(now()->addMinutes(${3:5}));"
+    ],
+    "description": "Dispatch a job with delay"
+  },
+  "Dispatch Job to Queue": {
+    "prefix": "job-dispatch-queue",
+    "body": [
+      "${1:JobName}::dispatch(\\$${2:model})->onQueue('${3:high}');"
+    ],
+    "description": "Dispatch a job to specific queue"
+  }
+}
